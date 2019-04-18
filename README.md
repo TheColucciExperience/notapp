@@ -1,2 +1,2 @@
 # notapp
-An app made for note creating using the LAMP stack.
+An app made for the creation of notes using the LAMP stack.

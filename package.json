@@ -1,0 +1,34 @@
+{
+  "name": "notapp",
+  "version": "1.0.0",
+  "description": "An application for managing notes.",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheColucciExperience/notapp.git"
+  },
+  "keywords": [
+    "notapp",
+    "TheColucciExperience"
+  ],
+  "author": "The Colucci Experience",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheColucciExperience/notapp/issues"
+  },
+  "homepage": "https://github.com/TheColucciExperience/notapp#readme",
+  "devDependencies": {
+    "css-loader": "^2.1.1",
+    "mini-css-extract-plugin": "^0.6.0",
+    "node-sass": "^4.11.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "sass-loader": "^7.1.0",
+    "terser-webpack-plugin": "^1.2.3",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {}
+}
