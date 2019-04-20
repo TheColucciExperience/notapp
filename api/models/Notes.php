@@ -14,7 +14,6 @@ class Notes {
   public $id;
   public $title;
   public $description;
-  public $last_modified;
 
   // Constructor with database as a parameter
 
@@ -60,7 +59,9 @@ class Notes {
 
   public function update() {
 
-    $query = "UPDATE $this->table SET title = ?, description = ? WHERE id = ?";
+    $query = "UPDATE $this->table
+              SET title = ?, description = ?, last_modified = CURRENT_TIME
+              WHERE id = ?";
     $stmt = $this->conn->prepare( $query );
 
     if( $this->id && $this->title && $stmt->execute( array( $this->title, $this->description, $this->id ) ) ) {

@@ -30,7 +30,6 @@ $note->id = htmlentities( strip_tags( $data->id ) );
 $note->title = htmlentities( strip_tags( $data->title ) );
 $note->description = htmlentities( strip_tags( $data->description ) );
 
-
 if ( $note->update() ) {
   $responseData = array(
     'message' => 'Note Updated Successfully',
