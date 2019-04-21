@@ -1,5 +1,13 @@
 
-// Test styles
+// Main styles for Notapp. Here we'll style the whole interface.
+
+// Importing variables ,animations and helper classes
+
+@import './variables',
+        './animations',
+        './helpers';
+
+// Reset styles
 
 * {
   margin: 0;
@@ -8,7 +16,216 @@
 }
 
 body {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: {
+    image: url( '../images/backgrounds/wooden-desk-background.jpg' );
+    size: cover;
+    repeat: no-repeat;
+  }
+}
+
+// Styles for menu and notes list container
+
+.menu {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
   width: 100%;
-  color: white;
-  background-color: #666;  // Just testing to see if it works
+  padding: .5rem 1rem;
+  background-color: $white;
+  box-shadow: 0 3px 3px 2px transparentize($black, .8);
+  @media (min-width: 768px) { padding: 1rem 1.5rem; }
+  &__btn {
+    position: relative;
+    z-index: 30;
+    padding: .3rem .4rem;
+    border: none;
+    background-color: transparent;
+    &--active {
+      color: $red;
+      background-color: $black;
+    }
+    @media (min-width: 768px) { &:hover { cursor: pointer; } }
+    &-icon {
+      font-size: 1.6rem;
+      @media (min-width: 768px) { font-size: 1.8rem; }
+      &--active { display: none; }
+    }
+    &--active &-icon--active { display: inline-block; }
+    &--active &-icon--closed { display: none; }
+  }
+}
+
+.notes-list {
+  list-style-type: none;
+  &-container {
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    left: -100%;
+    display: none;
+    width: 80%;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: {
+      top: 5rem;
+      bottom: 2rem;
+    }
+    color: white;
+    background-color: $black;
+    box-shadow: 3px 0 6px 2px transparentize($black, .5);
+    @media (min-width: 768px) {
+      width: 60%;
+      @media (min-width: 1200px) { width: 35%; }
+    }
+  }
+  &-title {
+    margin-bottom: 2rem;
+    font: {
+      family: $cute;
+      size: 2.5rem;
+    }
+    text-align: center;
+  }
+  &__item {
+    border-bottom: 1px solid $white;
+    padding: {
+      left: 1rem;
+      right: 1rem;
+    }
+    font: {
+      family: $cute;
+      size: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      padding: {
+        top: .5rem;
+        bottom: .5rem;
+      }
+      font-size: 1.65rem;
+      &:hover {
+        cursor: pointer;
+        color: $lightGreen;
+        transition-duration: .3s;
+      }
+      @media (min-width: 1200px) { font-size: 1.8rem; }
+    }
+    &:first-child { border-top: 1px solid $white; }
+  }
+  &-warning {
+    display: none;
+    margin-top: 4rem;
+    font: {
+      family: $cute;
+      size: 2rem;
+    }
+    text-align: center;
+    &--active { display: block; }
+  }
+}
+
+// Styles for the create note button
+
+.create-note-btn {
+  position: fixed;
+  z-index: 10;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  border: none;
+  border-radius: 50%;
+  padding: .7rem;
+  color: $white;
+  background-color: $lemonYellow;
+  box-shadow: 2px 3px 5px 2px transparentize($black, .6);
+  // We'll only style for hover on small notebooks and desktops onwards
+  @media (min-width: 768px) {
+    bottom: 3rem;
+    right: 3rem;
+    &:hover {
+      color: $lemonYellow;
+      background-color: $white;
+      transition-duration: .35s;
+      cursor: pointer;
+    }
+  }
+  &__icon {
+    font-size: 1.6rem;
+    @media (min-width: 768px) { font-size: 1.8rem; }
+  }
+}
+
+// Styles for note container and the note itself
+
+.note {
+  width: 100%;
+  max-width: 40rem;
+  padding: .8rem;
+  background-color: lighten($lemonYellow, 30%);
+  box-shadow: 2px 3px 5px 2px transparentize($black, .6);
+  @media (min-width: 768px) { padding: 1.5rem; }
+  &__title,
+  &__description {
+    display: block;
+    width: 100%;
+    border: none;
+    padding: .4rem;
+    color: $black;
+    background-color: transparent;
+  }
+  &__title {
+    border-bottom: 1px solid $black;
+    margin-bottom: 1rem;
+    font: {
+      family: $cute;
+      size: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      margin-bottom: 2rem;
+      font-size: 2rem ;
+    }
+  }
+  &__description {
+    min-height: 6rem;
+    max-height: 20rem;
+    margin-bottom: 1rem;
+    resize: vertical;
+  }
+  &__btn {
+    display: none;
+    margin-left: .8rem;
+    border: 1px solid $black;
+    padding: .3rem .4rem;
+    font: {
+      size: 1rem;
+      family: $cute;
+    }
+    text-transform: uppercase;
+    background-color: $white;
+    box-shadow: 2px 2px 3px 1px transparentize($black, .5);
+    @media (min-width: 768px) {
+      &:hover {
+        color: $white;
+        background-color: $black;
+        cursor: pointer;
+        transition-duration: .35s;
+      }
+    }
+    &--active { display: inline-block; }
+  }
+  &-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1.5rem;
+  }
+  &-btn-container {
+    display: flex;
+    justify-content: flex-end;
+  }
 }

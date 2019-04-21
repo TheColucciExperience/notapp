@@ -1,17 +1,71 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 		<meta name="description" content="Some description"/>
-    <title>Notapp, your app for note management</title>
+
+    <title>Notapp - your app for managing notes</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+          crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=ABeeZee:400,400i|Cute+Font" rel="stylesheet">
     <link rel="stylesheet" href="./dist/app.css"/>
+
   </head>
   <body>
 
-    <h1>Noteapp</h1>
+    <h1 class="sr-only">Notapp - your app for managing notes</h1>
 
+    <nav class="menu">
+
+      <button class="menu__btn" type="button" title="Toggle Menu">
+        <span>
+          <span class="fas fa-bars menu__btn-icon menu__btn-icon--closed"></span>
+        </span>
+        <span>
+          <span class="fas fa-times menu__btn-icon menu__btn-icon--active"></span>
+        </span>
+      </button>
+
+      <div class="notes-list-container">
+
+        <h3 class="notes-list-title">My Notes</h3>
+
+        <h4 class="notes-list-warning">You don't have any notes yet</h4>
+
+        <ul class="notes-list">
+          <li class="notes-list__item">
+            Item Numba 3 sueper mega hyper ultra item numba numba numba
+            Item Numba 3 sueper mega hyper ultra item numba numba numba
+          </li>
+        </ul>
+
+      </div>
+
+    </nav>
+
+    <div class="note-container">
+
+      <div class="note">
+        <input class="note__title js-note-title" type="text" placeholder="Note Title"
+               required/>
+        <textarea class="note__description js-note-description" rows="8">Note text...</textarea>
+        <div class="note-btn-container">
+          <button class="note__btn note__btn--active" type="button">Confirm</button>
+          <button class="note__btn note__btn--active" type="button">Update</button>
+          <button class="note__btn note__btn--active" type="button">Delete</button>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="create-note-btn" title="Create Note">
+      <span class="fas fa-plus create-note-btn__icon"></span>
+    </button>
 
     <script src="./dist/app.bundle.js"></script>
   </body>
