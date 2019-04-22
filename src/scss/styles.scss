@@ -31,7 +31,7 @@ body {
 
 .menu {
   position: fixed;
-  z-index: 10;
+  z-index: 15;
   top: 0;
   left: 0;
   width: 100%;
@@ -41,7 +41,7 @@ body {
   @media (min-width: 768px) { padding: 1rem 1.5rem; }
   &__btn {
     position: relative;
-    z-index: 30;
+    z-index: 60;
     padding: .3rem .4rem;
     border: none;
     background-color: transparent;
@@ -58,13 +58,26 @@ body {
     &--active &-icon--active { display: inline-block; }
     &--active &-icon--closed { display: none; }
   }
+  &-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    background-color: transparentize($black, .6);
+    cursor: pointer;
+    &--animated-in { animation: fadeIn .3s ease forwards; }
+    &--animated-out { animation: fadeOut .3s ease forwards; }
+  }
 }
 
 .notes-list {
   list-style-type: none;
   &-container {
     position: absolute;
-    z-index: 20;
+    z-index: 50;
     top: 0;
     left: -100%;
     display: none;
@@ -83,6 +96,8 @@ body {
       width: 60%;
       @media (min-width: 1200px) { width: 35%; }
     }
+    &--animated-in { animation: menuSlideIn .3s ease forwards; }
+    &--animated-out { animation: menuSlideOut .3s ease forwards; }
   }
   &-title {
     margin-bottom: 2rem;
@@ -131,7 +146,7 @@ body {
 
 // Styles for the create note button
 
-.create-note-btn {
+.reset-note-btn {
   position: fixed;
   z-index: 10;
   bottom: 1.5rem;
@@ -167,7 +182,10 @@ body {
   padding: .8rem;
   background-color: lighten($lemonYellow, 30%);
   box-shadow: 2px 3px 5px 2px transparentize($black, .6);
+  opacity: 0;
   @media (min-width: 768px) { padding: 1.5rem; }
+  &--animated-in { animation: fadeIn .3s ease-in forwards; }
+  &--animated-out { animation: fadeOut .3s ease-out forwards; }
   &__title,
   &__description {
     display: block;
@@ -228,4 +246,29 @@ body {
     display: flex;
     justify-content: flex-end;
   }
+}
+
+// Styles for message container and message text
+
+.message-container {
+  position: fixed;
+  z-index: 50;
+  left: 1.5rem;
+  bottom: -5rem;
+  max-width: 18.75rem;
+  border-radius: .5rem;
+  padding: 1rem;
+  opacity: 0;
+  background-color: transparentize($black, .2);
+  box-shadow: 2px 3px 3px 1px transparentize($black, .7);
+  &--animated-in { animation: messageSlideIn .3s ease-in forwards; }
+  &--animated-out { animation: messageSlideOut .3s ease-in forwards; }
+}
+
+.message-text {
+  font: {
+    family: $cute;
+    size: 1.4rem;
+  }
+  color: $white;
 }

@@ -7,4 +7,4 @@
 // Importing styles and scripts
 
 import './scss/styles.scss';
-import './js/test.js';
+import './js/loader.js';
